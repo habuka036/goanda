@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-
 )
 
 type StreamingConnection struct {
@@ -150,13 +149,72 @@ type PricingStreamResponse struct {
 }
 
 type TransactionStreamResponse struct {
-	Type          string          `json:"type"`
-	Time          string          `json:"time"`
-	TransactionID string          `json:"transactionID,omitempty"`
-	AccountID     string          `json:"accountID,omitempty"`
-	BatchID       string          `json:"batchID,omitempty"`
-	RequestID     string          `json:"requestID,omitempty"`
-	Transaction   json.RawMessage `json:"transaction,omitempty"`
+	Type                  string          `json:"type"`
+	Time                  string          `json:"time"`
+	TransactionID         string          `json:"transactionID,omitempty"`
+	AccountID             string          `json:"accountID,omitempty"`
+	BatchID               string          `json:"batchID,omitempty"`
+	RequestID             string          `json:"requestID,omitempty"`
+	Transaction           json.RawMessage `json:"transaction,omitempty"`
+	ID                    string          `json:"id,omitempty"`
+	DivisionID            int             `json:"divisionID,omitempty"`
+	SiteID                int             `json:"siteID,omitempty"`
+	AccountUserID         int             `json:"accountUserID,omitempty"`
+	AccountNumber         int             `json:"accountNumber,omitempty"`
+	HomeCurrency          string          `json:"homeCurrency,omitempty"`
+	UserID                int             `json:"userID,omitempty"`
+	OrderID               string          `json:"orderID,omitempty"`
+	ClientOrderID         string          `json:"clientOrderID,omitempty"`
+	Instrument            string          `json:"instrument,omitempty"`
+	Units                 string          `json:"units,omitempty"`
+	HomeConversionFactors struct {
+		GainQuoteHome string `json:"gainQuoteHome,omitempty"`
+		LossQuoteHome string `json:"lossQuoteHome,omitempty"`
+		GainBaseHome  string `json:"gainBaseHome,omitempty"`
+		LossBaseHome  string `json:"lossBaseHome,omitempty"`
+	} `json:"homeConversionFactors,omitempty"`
+	FullVWAP                    string `json:"fullVWAP,omitempty"`
+	FullPrice                   string `json:"fullPrice,omitempty"`
+	Reason                      string `json:"reason,omitempty"`
+	Pl                          string `json:"pl,omitempty"`
+	QuotePL                     string `json:"quotePL,omitempty"`
+	Financing                   string `json:"financing,omitempty"`
+	BaseFinancing               string `json:"baseFinancing,omitempty"`
+	QuoteFinancing              string `json:"quoteFinancing,omitempty"`
+	Commission                  string `json:"commission,omitempty"`
+	GuaranteedExecutionFee      string `json:"guaranteedExecutionFee,omitempty"`
+	QuoteGuaranteedExecutionFee string `json:"quoteGuaranteedExecutionFee,omitempty"`
+	AccountBalance              string `json:"accountBalance,omitempty"`
+	TradeOpened                 struct {
+		TradeID                     string `json:"tradeID,omitempty"`
+		Units                       string `json:"units,omitempty"`
+		Price                       string `json:"price,omitempty"`
+		GuaranteedExecutionFee      string `json:"guaranteedExecutionFee,omitempty"`
+		QuoteGuaranteedExecutionFee string `json:"quoteGuaranteedExecutionFee,omitempty"`
+		ClientExtensions            struct {
+			ID      string `json:"id,omitempty"`
+			Tag     string `json:"tag,omitempty"`
+			Comment string `json:"comment,omitempty"`
+		} `json:"clientExtensions,omitempty"`
+		HalfSpreadCost        string `json:"halfSpreadCost,omitempty"`
+		InitialMarginRequired string `json:"initialMarginRequired,omitempty"`
+	} `json:"tradeOpened,omitempty"`
+	TradeClosed    []TradeReduce `json:"tradeClosed,omitempty"`
+	TradeReduced   TradeReduce   `json:"tradeReduced,omitempty"`
+	HalfSpreadCost string        `json:"halfSpreadCost,omitempty"`
+}
+
+type TradeReduce struct {
+	TradeID                     string `json:"tradeID"`
+	Units                       string `json:"units"`
+	RealizedPL                  string `json:"realizedPL"`
+	Financing                   string `json:"financing"`
+	BaseFinancing               string `json:"baseFinancing"`
+	QuoteFinancing              string `json:"quoteFinancing"`
+	FinancingRate               string `json:"financingRate"`
+	GuaranteedExecutionFee      string `json:"guaranteedExecutionFee"`
+	QuoteGuaranteedExecutionFee string `json:"quoteGuaranteedExecutionFee"`
+	HalfSpreadCost              string `json:"halfSpreadCost"`
 }
 
 type HeartbeatResponse struct {
