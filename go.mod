@@ -1,4 +1,4 @@
-module github.com/awoldes/goanda
+module github.com/habuka036/goanda
 
 go 1.15
 
