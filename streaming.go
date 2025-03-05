@@ -180,11 +180,11 @@ type TransactionStreamResponse struct {
 		Timestamp   string `json:"timestamp,omitempty"`
 		Bids        []struct {
 			Price     string `json:"price"`
-			Liquidity int    `json:"liquidity"`
+			Liquidity string `json:"liquidity"`
 		} `json:"bids,omitempty"`
 		Asks []struct {
 			Price     string `json:"price"`
-			Liquidity int    `json:"liquidity"`
+			Liquidity string `json:"liquidity"`
 		} `json:"asks,omitempty"`
 	} `json:"fullPrice,omitempty"`
 	Reason                      string `json:"reason,omitempty"`
