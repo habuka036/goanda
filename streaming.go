@@ -174,7 +174,19 @@ type TransactionStreamResponse struct {
 		LossBaseHome  string `json:"lossBaseHome,omitempty"`
 	} `json:"homeConversionFactors,omitempty"`
 	FullVWAP                    string `json:"fullVWAP,omitempty"`
-	FullPrice                   string `json:"fullPrice,omitempty"`
+	FullPrice                   struct {
+		CloseoutBid string `json:"closeoutBid,omitempty"`
+		CloseoutAsk string `json:"closeoutAsk,omitempty"`
+		Timestamp   string `json:"timestamp,omitempty"`
+		Bids        []struct {
+			Price     string `json:"price"`
+			Liquidity int    `json:"liquidity"`
+		} `json:"bids,omitempty"`
+		Asks []struct {
+			Price     string `json:"price"`
+			Liquidity int    `json:"liquidity"`
+		} `json:"asks,omitempty"`
+	} `json:"fullPrice,omitempty"`
 	Reason                      string `json:"reason,omitempty"`
 	Pl                          string `json:"pl,omitempty"`
 	QuotePL                     string `json:"quotePL,omitempty"`
