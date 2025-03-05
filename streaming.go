@@ -168,13 +168,13 @@ type TransactionStreamResponse struct {
 	Instrument            string          `json:"instrument,omitempty"`
 	Units                 string          `json:"units,omitempty"`
 	HomeConversionFactors struct {
-		GainQuoteHome string `json:"gainQuoteHome,omitempty"`
-		LossQuoteHome string `json:"lossQuoteHome,omitempty"`
-		GainBaseHome  string `json:"gainBaseHome,omitempty"`
-		LossBaseHome  string `json:"lossBaseHome,omitempty"`
+		GainQuoteHome Factor `json:"gainQuoteHome,omitempty"`
+		LossQuoteHome Factor `json:"lossQuoteHome,omitempty"`
+		GainBaseHome  Factor `json:"gainBaseHome,omitempty"`
+		LossBaseHome  Factor `json:"lossBaseHome,omitempty"`
 	} `json:"homeConversionFactors,omitempty"`
-	FullVWAP                    string `json:"fullVWAP,omitempty"`
-	FullPrice                   struct {
+	FullVWAP  string `json:"fullVWAP,omitempty"`
+	FullPrice struct {
 		CloseoutBid string `json:"closeoutBid,omitempty"`
 		CloseoutAsk string `json:"closeoutAsk,omitempty"`
 		Timestamp   string `json:"timestamp,omitempty"`
@@ -214,6 +214,10 @@ type TransactionStreamResponse struct {
 	TradeClosed    []TradeReduce `json:"tradeClosed,omitempty"`
 	TradeReduced   TradeReduce   `json:"tradeReduced,omitempty"`
 	HalfSpreadCost string        `json:"halfSpreadCost,omitempty"`
+}
+
+type Factor struct {
+	Factor string `json:"factor"`
 }
 
 type TradeReduce struct {
